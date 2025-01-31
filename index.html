@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Web</title>
+    <script>
+        function refreshAppName() {
+            fetch('/appname')
+                .then(response => response.text())
+                .then(name => {
+                    document.getElementById('appname').textContent = name;
+                    document.getElementById('timestamp').textContent = new Date().toLocaleTimeString();
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Capstone Web</h1>
+    <p>Welcome to Capstone Project Part 1</p>
+    <p>App Name: <span id="appname"></span></p>
+    <p>Last Updated: <span id="timestamp"></span></p>
+    <button onclick="refreshAppName()">Refresh</button>
+    <script>
+        refreshAppName();
+        // Auto refresh every 5 seconds
+        setInterval(refreshAppName, 5000);
+    </script>
+</body>
+</html>
